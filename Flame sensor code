@@ -1,0 +1,22 @@
+int FLAME_SENSOR = 34;
+int BUZZER = 5;         
+
+void setup() {
+    Serial.begin(9600);         
+    pinMode(FLAME_SENSOR, INPUT); 
+    pinMode(BUZZER, OUTPUT);      
+}
+
+void loop() {
+    int flameValue = digitalRead(FLAME_SENSOR); 
+
+    if (flameValue == LOW) { 
+        Serial.println("Fire Detected");
+        digitalWrite(BUZZER, HIGH); 
+    } else {
+        Serial.println("No Fire Detected");
+        digitalWrite(BUZZER, LOW); 
+    }
+
+    delay(1000); 
+}
